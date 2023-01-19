@@ -1,0 +1,75 @@
+{
+  "contractsList": [
+    {
+      "hotelName": "galadari",
+      "startingDate": "2023-01-16T18:30:00.000Z",
+      "endingDate": "2024-01-15T18:30:00.000Z",
+      "id": 1
+    },
+    {
+      "hotelName": "kingsbury",
+      "startingDate": "2023-01-15T18:30:00.000Z",
+      "endingDate": "2023-01-25T18:30:00.000Z",
+      "id": 2
+    },
+    {
+      "hotelName": "kingsbury",
+      "startingDate": "2023-01-15T18:30:00.000Z",
+      "endingDate": "2023-01-24T18:30:00.000Z",
+      "id": 3
+    },
+    {
+      "hotelName": "galadari",
+      "startingDate": "2023-01-17T18:30:00.000Z",
+      "endingDate": "2025-12-16T18:30:00.000Z",
+      "id": 4
+    },
+    {
+      "hotelName": "kingsbury",
+      "startingDate": "2023-01-17T18:30:00.000Z",
+      "endingDate": "2023-01-27T18:30:00.000Z",
+      "id": 5
+    },
+    {
+      "hotelName": "'hotel'",
+      "startingDate": "2023-01-15T18:30:00.000Z",
+      "endingDate": "2023-01-26T18:30:00.000Z",
+      "id": 6
+    },
+    {
+      "hotelName": "Solis",
+      "startingDate": "2023-01-15T18:30:00.000Z",
+      "endingDate": "2023-01-24T18:30:00.000Z",
+      "id": 7
+    },
+    {
+      "hotelName": "Kingsbury",
+      "startingDate": "2023-01-23T18:30:00.000Z",
+      "endingDate": "2023-01-27T18:30:00.000Z",
+      "id": 8
+    }
+  ],
+  "hotels": [
+    {
+      "hotelName": "Cinnamon Grand",
+      "address": "Cinnamon Grand,\nColombo 2.",
+      "contactNo": 112234567,
+      "id": 1
+    },
+    {
+      "hotelName": "Solis",
+      "address": "Solis, Matara.",
+      "contactNo": 94412242598,
+      "id": 2
+    },
+    {
+      "hotelName": "Mariot",
+      "address": "Mariot, Weligama.",
+      "contactNo": 94412256389,
+      "id": 3
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

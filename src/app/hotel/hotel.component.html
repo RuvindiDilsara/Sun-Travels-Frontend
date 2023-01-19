@@ -1,0 +1,33 @@
+
+
+<div class='hotelContainer'>
+    <div>
+        <h2>Here is the availability of the hotels for given request</h2>
+    </div>
+    <mat-grid-list cols="4"  [gutterSize]="'10px'" >
+        <mat-grid-tile *ngFor="let hotel of hotels">
+            <mat-card class="example-card">
+                <mat-card-header>
+                  
+                  <mat-card-title>{{hotel.hotelName}}</mat-card-title>
+                  <mat-card-subtitle>{{hotel.availability}}</mat-card-subtitle>
+                </mat-card-header>
+                <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+                <mat-card-content>
+                  <p *ngFor="let room of hotel.rooms">
+                    {{room.roomType}} at {{room.price}}
+                  </p>
+                  <p>--for temporary----for temporary--
+                    
+                  </p>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-button>VIEW</button>
+                  
+                </mat-card-actions>
+              </mat-card>
+        </mat-grid-tile>
+        
+      </mat-grid-list>
+    
+</div>

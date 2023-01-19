@@ -1,0 +1,93 @@
+<h1 mat-dialog-title>Add Contract Form </h1>
+<div mat-dialog-content>
+    <form [formGroup]="addContractForm" (ngSubmit)="addContract()">
+        <div style="height: 100;">
+            Please fill the form!
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Hotel name</mat-label>
+                <mat-select formControlName="hotelName" placeholder="Hotel Name">
+                    <mat-option *ngFor="let hotel of hotels" value={{hotel.hotelName}}>{{hotel.hotelName}}</mat-option>
+                    <!-- <mat-option value="galadari">Galadari</mat-option>
+                    <mat-option value="kingsbury">Kingsbury</mat-option> -->
+                  </mat-select>
+              </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Enter validity period</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate formControlName="startingDate" placeholder="Starting date" required>
+                  <input matEndDate formControlName="endingDate" placeholder="Ending date" required>
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              
+                <!-- <mat-error *ngIf="searchForm.controls.checkInDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                <mat-error *ngIf="searchForm.controls.checkOutDate.hasError('matEndDateInvalid')">Invalid end date</mat-error> -->
+              </mat-form-field>
+        </div>
+          <mat-divider></mat-divider>
+          <div style="height: 100;">
+            Please enter room types with price!
+        </div>
+          
+          <span *ngIf="roomTypes">
+            <ul>
+                <li *ngFor="let roomtype of roomTypes">
+                   {{roomtype.noOfRooms}} rooms of {{roomtype.roomTypeName}} with max adults 
+                   {{roomtype.maxNoOfAdults}} for {{roomtype.pricePerOnePerson | currency}}
+                </li>
+            </ul>
+        </span>
+        
+        
+        <div>
+            <form [formGroup]="addRoomtypesForm" >
+                <div>
+                    <mat-divider></mat-divider>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Room Type</mat-label>
+                        <input matInput formControlName="roomType" placeholder="Room Type">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>No of Rooms</mat-label>
+                        <input matInput type="number" min="1" id="no_of_rooms" formControlName="no_of_rooms" required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Maximum no of Adults</mat-label>
+                        <input matInput type="number" min="1" id="max_no_of_adults" formControlName="max_no_of_adults" required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Price per one person</mat-label>
+                        <input matInput type="number" min="1" id="price" formControlName="price_per_one" required>
+                    </mat-form-field>
+                </div>
+                <div mat-dialog-actions [align]="'end'">
+                    
+                    
+                    <button type="submit" mat-icon-button matTooltip="Accent" color="accent" aria-label="add" (click)="addRoomType()">
+                        <mat-icon>add</mat-icon>
+                      </button>
+                </div>
+                
+            </form>
+        </div>
+        <mat-divider></mat-divider>
+        <div mat-dialog-actions [align]="'end'">
+            <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+                    <button type="submit" mat-raised-button color="primary" aria-label="add" >
+                        Add Contract
+                      </button>
+        </div>
+        
+    </form>
+</div>
+
+<!-- no need of two forms can use add room type function with the click event of the button -->
