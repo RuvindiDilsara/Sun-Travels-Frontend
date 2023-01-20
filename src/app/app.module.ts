@@ -30,6 +30,7 @@ import {MatSortModule} from '@angular/material/sort';
 import { DetailedContractComponent } from './components/detailed-contract/detailed-contract.component';
 import { AddHotelFormComponent } from './components/add-hotel-form/add-hotel-form.component';
 import { AddHotelServiceService } from './services/add-hotel-service.service';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { AddHotelServiceService } from './services/add-hotel-service.service';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatChipsModule,
   ],
   providers: [
     HotelService,

@@ -25,7 +25,7 @@ export class AddContractDialogComponent {
       hotelName: ['', Validators.required],
       startingDate: ['', Validators.required],
       endingDate: ['', Validators.required],
-      // roomTypes: this.roomTypes,
+      markupValue: ['', Validators.required],
     });
     this.addRoomtypesForm = this.formBuilder.group({
       roomType: ['', Validators.required],

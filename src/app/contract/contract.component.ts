@@ -14,7 +14,7 @@ import { AddHotelFormComponent } from '../components/add-hotel-form/add-hotel-fo
   styleUrls: ['./contract.component.css']
 })
 export class ContractComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'hotelName', 'startingDate', 'endingDate', 'view'];
+  displayedColumns: string[] = ['id', 'hotelName', 'startingDate', 'endingDate', 'markupValue', 'view'];
   dataSource!: MatTableDataSource<any>;
   contracts !: [];
   hotels = [];
@@ -56,9 +56,7 @@ export class ContractComponent implements OnInit {
     this.api.getHotels()
     .subscribe({
       next:(res)=>{
-        // console.log('hotels',res);
         this.hotels = res;
-        // console.log("hotel list = ", this.hotels)
       }
       
     })

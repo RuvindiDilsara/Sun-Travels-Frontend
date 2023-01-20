@@ -1,7 +1,18 @@
 mat-grid-tile {
-   
+
   }
 
 .hotelContainer{
     padding: 20px;
 }
+
+.example-card {
+  max-width: 1600px;
+  margin-bottom: 8px;
+}
+
+.mat-image{
+  width: 300px;
+  height: auto;
+}
+

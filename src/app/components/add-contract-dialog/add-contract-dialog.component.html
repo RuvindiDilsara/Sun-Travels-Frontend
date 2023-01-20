@@ -29,6 +29,12 @@
                 <mat-error *ngIf="searchForm.controls.checkOutDate.hasError('matEndDateInvalid')">Invalid end date</mat-error> -->
               </mat-form-field>
         </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter markup value</mat-label>
+                <input matInput type="number" step="any" min="0" id="markupValue" formControlName="markupValue" required>
+            </mat-form-field>
+        </div>
           <mat-divider></mat-divider>
           <div style="height: 100;">
             Please enter room types with price!

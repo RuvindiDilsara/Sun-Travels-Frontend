@@ -21,31 +21,34 @@
                 <td mat-cell *matCellDef="let row"> {{row.contractId}} </td>
               </ng-container>
           
-              <!-- Progress Column -->
               <ng-container matColumnDef="hotelName">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> hotelName </th>
                 <td mat-cell *matCellDef="let row"> {{row.hotelName}}</td>
               </ng-container>
           
-              <!-- Name Column -->
+      
               <ng-container matColumnDef="startingDate">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> startingDate </th>
                 <td mat-cell *matCellDef="let row"> {{row.startingDate | date}} </td>
               </ng-container>
           
-              <!-- Fruit Column -->
               <ng-container matColumnDef="endingDate">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> endingDate </th>
                 <td mat-cell *matCellDef="let row"> {{row.endingDate | date}} </td>
               </ng-container>
 
-              <!-- Fruit Column -->
+              <ng-container matColumnDef="markupValue">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> markupValue </th>
+                <td mat-cell *matCellDef="let row"> {{row.markupValue }} </td>
+              </ng-container>
+
               <ng-container matColumnDef="view">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> View Details </th>
                 <td mat-cell *matCellDef="let row"> 
                     <a
-                    [title]="'contract id' + row.id + 'details'"
-                    [routerLink]="['/contracts', row.id]">
+                    [title]="'contract id' + row.contractId + 'details'"
+                    [routerLink]="['/contracts', row.contractId]">
+                    {{row.id}}
                     View 
                     </a>
                 </td>

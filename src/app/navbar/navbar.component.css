@@ -1,3 +1,17 @@
 .spacer{
     flex: 1 1 auto;
 }
+mat-toolbar{
+    background-color: rgb(3, 176, 17);
+}
+.name{
+    color: aliceblue;
+    font-size: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+mat-button{
+    color: aliceblue;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

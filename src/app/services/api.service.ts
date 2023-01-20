@@ -25,4 +25,13 @@ export class ApiService {
   getHotels(): Observable<any>{
     return this.http.get<any>(`${this.apiServerUrl}/api/hotel/all`);
   }
+
+  search(data: any): Observable<any>{
+    return this.http.post<any>(`${this.apiServerUrl}/api/search`, data);
+  }
+
+  getContractDetails(contractId: number) :Observable<any>{
+    return this.http.get<any>(`${this.apiServerUrl}/api/contract/find/${contractId}`);
+    
+  }
 }

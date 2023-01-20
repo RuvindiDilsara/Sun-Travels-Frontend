@@ -1,12 +1,8 @@
 .drawer{
-    height: 40%;
+    /* height: 40%; */
     width: 100%;
-    background-color: rgba(0, 119, 255, 0.543);
-}
-
-.sun_travel{
-    color: rgba(255, 255, 255, 0.95);
-    font-size: 50;
+    /* background-color: rgba(23, 247, 57, 0.543); */
+    padding: 10px;
 }
 
 .searchform{
@@ -20,15 +16,48 @@
 }
 
 .example-card{
-    background-color: aliceblue;
+    /* background-color: rgb(231, 251, 237); */
     align-content: center;
-    width: 50%;
-    margin-left: 25%;
+    width: 40%;
+    margin-left: 30%;
     border-radius: 10px;
     padding:10;
     align-self: center;
 }
 
 mat-form-field{
-    width: 100%;
+    width: 30%;
 }
+
+.result-card {
+    max-width: 800px;
+    margin-bottom: 8px;
+  }
+
+.mat-card-image{
+    width: 400px;
+    height: auto;
+}
+
+mat-chip-listbox{
+    width: 20%;
+    
+}
+
+mat-chip-option{
+    
+}
+
+.footer{
+    background-color: rgb(4, 169, 26);
+    text-align: center;
+    /* position: ; */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    height: 30px;
+    padding: 5px;
+    font-size: 20px;
+  }
+
