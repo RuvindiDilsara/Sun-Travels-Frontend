@@ -1,0 +1,24 @@
+
+<h1 mat-dialog-title>Hotel {{data.hotelName}}</h1>
+<div mat-dialog-content>
+  Contract ID: {{data.contractId}}
+    <br>
+    Starting Date: {{data.startingDate}}
+    <br>
+    Ending Date: {{data.endingDate}}
+    <br>
+    Markup Value: {{data.markupValue}}
+    <ul>
+        <li *ngFor="let roomtype of data.roomTypes">
+            
+            {{roomtype.roomTypeName}} room at {{roomtype.pricePerOnePerson|currency}} per person per night
+            <br>
+            Maximum adults per room : {{roomtype.maxNoOfAdults}}
+            <br>
+            No of available rooms: {{roomtype.noOfRooms}}
+        </li>
+    </ul>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Close</button>
+      </div>
+</div>

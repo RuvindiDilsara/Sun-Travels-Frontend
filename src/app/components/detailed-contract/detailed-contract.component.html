@@ -1,1 +1,15 @@
-<p>detailed-contract works!</p>
+<mat-card style="margin: auto;" *ngIf="contractDetails">
+    <mat-card-title class="texts">Hotel {{contractDetails.hotelName}}</mat-card-title>
+    <mat-card-subtitle class="texts">Validity Period {{contractDetails.startingDate}} - {{contractDetails.endingDate}}
+       <br> Markup Value : {{contractDetails.markupValue}}
+    </mat-card-subtitle>
+    <mat-card-content>
+        <ul>
+            <li *ngFor="let roomtype of contractDetails.roomTypes">
+                {{roomtype.roomTypeName}} room at {{roomtype.pricePerOnePerson|currency}} per person per night
+                <br>
+                Maximum adults per room : {{roomtype.maxNoOfAdults}}
+            </li>
+        </ul>
+    </mat-card-content>
+</mat-card>

@@ -73,6 +73,8 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Price per one person</mat-label>
                         <input matInput type="number" min="1" id="price" formControlName="price_per_one" required>
+                        <span matTextPrefix>$&nbsp;</span>
+    <span matTextSuffix>.00</span>
                     </mat-form-field>
                 </div>
                 <div mat-dialog-actions [align]="'end'">

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Form, FormBuilder } from '@angular/forms';
+import { Form, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from '../services/api.service';
 @Component({
   selector: 'app-home',
@@ -9,19 +10,27 @@ import { ApiService } from '../services/api.service';
 export class HomeComponent {
   roomList =<any>[];
   searchResults = <any>[];
+  minDate!: Date;
+  maxDate !: Date;
+
+  ngOnInit(){
+    this.minDate=new Date();
+    this.maxDate = new Date(this.minDate.getFullYear()+1,12,30);
+  }
 
   addRoomForm = this.formBuilder.group({
-    no_of_rooms: '',
-    no_of_adults: '',
+    no_of_rooms: ['', Validators.required],
+    no_of_adults: ['', Validators.required],
   })
 
   searchForm = this.formBuilder.group({
-    checkInDate: '',
-    noOfNights: '',
+    checkInDate: ['', Validators.required],
+    noOfNights: ['', Validators.required],
     rooms: [],
   })
   constructor(private formBuilder: FormBuilder, 
-    private api: ApiService){}
+    private api: ApiService,
+    private _snackBar: MatSnackBar){}
 
   onSubmit(): void{
     if(this.searchForm.valid){
@@ -35,9 +44,14 @@ export class HomeComponent {
         } 
       })
     }
-    // this.addRoomForm.reset();
-    // 
-    // this.searchForm.reset();
+    else{
+      this.openSnackBar("Enter required data!", "close");
+    }
+    
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
   onRoomAdd(): void{
@@ -56,6 +70,13 @@ export class HomeComponent {
     if (index >= 0) {
       this.roomList.splice(index, 1);
     }
+  }
+
+  reset():void{
+    this.addRoomForm.reset();
+    this.searchForm.reset();
+    this.roomList = [];
+    this.searchResults =[];
   }
 }
 

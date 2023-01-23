@@ -1,18 +1,26 @@
-mat-grid-tile {
-
-  }
 
 .hotelContainer{
     padding: 20px;
 }
 
 .example-card {
-  max-width: 1600px;
-  margin-bottom: 8px;
+  max-width: 50%;
+  margin: auto;
+  margin-top: 10px;
+  align-self: auto;
+  margin-bottom: 20px;
 }
 
+.example-card:hover{
+  background-color: darkgray;
+}
 .mat-image{
   width: 300px;
   height: auto;
+  margin: auto;
+  margin-right: 10px;
+}
+mat-title{
+  color: white;
 }
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-contract-dialog',
@@ -15,7 +16,9 @@ export class AddContractDialogComponent {
   addContractForm !: FormGroup;
   addRoomtypesForm !: FormGroup;
   
-  constructor(private formBuilder: FormBuilder, private api: ApiService, private dialogRef: MatDialogRef<AddContractDialogComponent>){
+  constructor(private formBuilder: FormBuilder, private api: ApiService,
+    private _snackBar: MatSnackBar,
+     private dialogRef: MatDialogRef<AddContractDialogComponent>){
       // this.hotels = service.getHotels();
     }
   
@@ -36,6 +39,10 @@ export class AddContractDialogComponent {
     this.getAllHotels();
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+
   addContract(){
     console.log(this.addContractForm.value);
     if(this.addContractForm.valid){
@@ -44,12 +51,12 @@ export class AddContractDialogComponent {
       this.api.postContract(this.addContractForm.value)
       .subscribe({
         next:(res)=>{
-          alert("Contract added successfully");
+          this.openSnackBar("Contract added successfully", "close");
           this.addContractForm.reset();
           this.dialogRef.close('save');
         },
         error:()=>{
-          alert("Error while adding the contract");
+          this.openSnackBar("Error while adding the contract", "close");
         }
       })
     }
@@ -67,11 +74,16 @@ export class AddContractDialogComponent {
   }
 
   addRoomType(){
-    this.roomTypes.push({roomTypeName:this.addRoomtypesForm.value.roomType, 
-      noOfRooms: this.addRoomtypesForm.value.no_of_rooms,
-      maxNoOfAdults: this.addRoomtypesForm.value.max_no_of_adults,
-     pricePerOnePerson: this.addRoomtypesForm.value.price_per_one});
-    console.log('list', this.roomTypes);
-    this.addRoomtypesForm.reset();
+    if(this.addRoomtypesForm.valid){
+      this.roomTypes.push({roomTypeName:this.addRoomtypesForm.value.roomType, 
+        noOfRooms: this.addRoomtypesForm.value.no_of_rooms,
+        maxNoOfAdults: this.addRoomtypesForm.value.max_no_of_adults,
+       pricePerOnePerson: this.addRoomtypesForm.value.price_per_one});
+      console.log('list', this.roomTypes);
+      this.addRoomtypesForm.reset();
+    }
+    else{
+      alert("Enter valid data!");
+    }
   }
 }

@@ -3,6 +3,7 @@
 }
 mat-toolbar{
     background-color: rgb(3, 176, 17);
+    
 }
 .name{
     color: aliceblue;
@@ -11,7 +12,6 @@ mat-toolbar{
 }
 
 mat-button{
-    color: aliceblue;
     font-size: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

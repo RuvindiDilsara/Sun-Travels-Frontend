@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-add-hotel-form',
   templateUrl: './add-hotel-form.component.html',
@@ -10,7 +11,10 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class AddHotelFormComponent {
   addHotelForm !: FormGroup;
 
-  constructor (private formBuilder: FormBuilder, private api: ApiService, private dialogRef: MatDialogRef<AddHotelFormComponent>){
+  constructor (private formBuilder: FormBuilder, 
+    private _snackBar: MatSnackBar,
+    private api: ApiService, 
+    private dialogRef: MatDialogRef<AddHotelFormComponent>){
 
   }
   ngOnInit(){
@@ -21,18 +25,22 @@ export class AddHotelFormComponent {
     });
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+
   addHotel(){
     console.log(this.addHotelForm.value);
     if(this.addHotelForm.valid){
       this.api.postHotel(this.addHotelForm.value)
       .subscribe({
         next:(res)=>{
-          alert("Hotel added successfully");
+          this.openSnackBar("Hotel added successfully", "close");
           this.addHotelForm.reset();
           this.dialogRef.close('save');
         },
         error:()=>{
-          alert("Error while adding the hotel");
+          this.openSnackBar("Error while adding the hotel", "close");
         }
       })
     }

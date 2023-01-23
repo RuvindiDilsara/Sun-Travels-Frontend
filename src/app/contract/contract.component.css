@@ -11,3 +11,25 @@ table {
     max-width: 1200px;
     margin: 0 auto;
 }
+
+.btnAddContract{
+  margin-left: 10px;
+  position: relative;
+  left: 20px;
+}
+
+.buttonAddHotel{
+  margin-left: 570px;
+  position: relative;
+  left: 20px;
+}
+
+
+.filter{
+  width: 30%;
+  /* margin-left: 840px; */
+}
+
+.tableRow:hover{
+  background-color: darkslategrey;
+}

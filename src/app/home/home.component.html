@@ -1,28 +1,40 @@
 <div class="drawer">
-    <!-- <mat-card class="example-card">
-        <mat-card-content>
-            
-        </mat-card-content>
-    </mat-card> -->
-    <form [formGroup] = "searchForm" (ngSubmit)="onSubmit()">
-        <div>
-            <mat-form-field appearance="outline">
+    
+    <div class="searchArea" >
+        <form [formGroup] = "searchForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="fill" >
                 <mat-label>Enter Check-in date</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName="checkInDate" placeholder="Check-in date" required>
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="checkInDate" placeholder="Check-in date" required>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-                <mat-hint>MM/DD/YYYY</mat-hint>
+                <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
               </mat-form-field>
-        </div>
-        <div>
-            <div>
-                <mat-form-field appearance="outline">
-                    <mat-label>No of Nights</mat-label>
-                    <input matInput type="number" min="1" id="noOfNights" formControlName="noOfNights" required>
+
+              <mat-form-field class="numberInputs">
+                <mat-label>No of Nights</mat-label>
+                <input matInput type="number" min="1" id="noOfNights" formControlName="noOfNights" required>
+            </mat-form-field>
+    
+        <div style="margin-left: 17%;">
+            <form [formGroup]="addRoomForm" (ngSubmit)="onRoomAdd()">
+            
+                <mat-form-field  class="numberInputs">
+                    <mat-label>No of Rooms</mat-label>
+                    <input matInput type="number" min="1" id="no_of_rooms" formControlName="no_of_rooms" required>
                 </mat-form-field>
-            </div>
+            
+                <mat-form-field  class="numberInputs"> 
+                    <!-- appearance="outline" -->
+                    <mat-label>No of Adults</mat-label>
+                    <input matInput type="number" min="1" id="no_of_adults" formControlName="no_of_adults" required>
+                </mat-form-field>
+            
+            <button type="submit" mat-icon-button color="primary" aria-label="add" >
+                <mat-icon>add</mat-icon> 
+              </button>
+        </form>
         </div>
-        <div>
+        <div style="margin-left: 28%;">
             <mat-chip-listbox class="mat-mdc-chip-set-stacked" >
                 <mat-chip-option *ngFor="let room of roomList" (removed)="remove(room)" color="accent">
                     {{room.noOfRooms}} rooms with {{room.noOfAdults}} adults
@@ -31,39 +43,28 @@
                       </button>
                 </mat-chip-option>
               </mat-chip-listbox>
+              
         </div>
+        <button  mat-raised-button color="primary" style="margin-left: 68%;" (click)="reset()">Reset</button>
+        <button type="submit" mat-raised-button color="primary" style="margin-left: 10px;">Search</button>
         
-        <div>
-            <form [formGroup]="addRoomForm" (ngSubmit)="onRoomAdd()">
-                <div>
-                    <mat-form-field appearance="outline">
-                        <mat-label>No of Rooms</mat-label>
-                        <input matInput type="number" min="1" id="no_of_rooms" formControlName="no_of_rooms" required>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field appearance="outline">
-                        <mat-label>No of Adults</mat-label>
-                        <input matInput type="number" min="1" id="no_of_adults" formControlName="no_of_adults" required>
-                    </mat-form-field>
-                </div>
-                <button type="submit" mat-icon-button matTooltip="Accent" color="accent" aria-label="add" >
-                    <mat-icon>add</mat-icon>
-                  </button>
-            </form>
-        </div>
-        <button type="submit" mat-button>Search</button>
     </form>
-    
+    </div>
+ 
+        
+  <div> 
         <mat-card *ngFor="let searchResult of searchResults" class="result-card">
             <mat-card-header >
                 <mat-card-title-group>
                     <mat-card-title>
                         {{searchResult.hotel.hotelName}}
-                        <span *ngIf="searchResult.available" style="background-color: limegreen;">
+                        <span *ngIf="searchResult.available" style="background-color: limegreen; 
+                        padding: 5px; 
+                        border-radius: 10px;">
                             Available
                         </span>
-                        <span *ngIf="!searchResult.available" style="background-color: red;">
+                        <span *ngIf="!searchResult.available" style="background-color: red;  padding: 5px; 
+                        border-radius: 10px;">
                             Unavailable
                         </span>
                     </mat-card-title>
@@ -89,6 +90,15 @@
         </mat-card>
     
 </div>
+</div> 
 <footer class="footer">
-    SunTravelssss
+    <div class="detailArea">
+        <h1 style="font-size: 40px;" class="name">
+            Sun Travels 
+        </h1>
+        <img src="../../assets/images/footer_image.svg" alt="" style="width: 200px; height: auto;">
+    </div>
+    <div class="imageArea">
+        
+    </div>
 </footer>

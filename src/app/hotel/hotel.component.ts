@@ -30,4 +30,5 @@ export class HotelComponent {
     })
     return this.hotels;
   }
+
 }

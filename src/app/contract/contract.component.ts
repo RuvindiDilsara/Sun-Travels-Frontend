@@ -7,6 +7,9 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { AddHotelFormComponent } from '../components/add-hotel-form/add-hotel-form.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DetailedContractComponent } from '../components/detailed-contract/detailed-contract.component';
+import { ContractDetailsComponent } from '../components/contract-details/contract-details.component';
 
 @Component({
   selector: 'app-contract',
@@ -22,7 +25,7 @@ export class ContractComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dialog: MatDialog, private api: ApiService){
+  constructor(private dialog: MatDialog, private api: ApiService, private _snackBar: MatSnackBar){
   }
   ngOnInit(): void {
     this.getAllContracts();
@@ -41,6 +44,9 @@ export class ContractComponent implements OnInit {
     //   console.log(`Dialog result: ${result}`);
     // });
   }
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
 
   openForm() {
     this.dialog.open(AddHotelFormComponent, {
@@ -57,8 +63,10 @@ export class ContractComponent implements OnInit {
     .subscribe({
       next:(res)=>{
         this.hotels = res;
+      },
+      error: (err)=>{
+        this.openSnackBar("Error while fetching the Records!", "close");
       }
-      
     })
   }
 
@@ -74,7 +82,7 @@ export class ContractComponent implements OnInit {
         this.dataSource.sort = this.sort;
       },
       error: (err)=>{
-        alert("Error while fetching the Records!")
+        this.openSnackBar("Error while fetching the Records!", "close");
       }
     })
   }
@@ -86,5 +94,14 @@ export class ContractComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  openContractDetails(contract: any){
+    const dialogRef = this.dialog.open(ContractDetailsComponent, {
+      data: contract,
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

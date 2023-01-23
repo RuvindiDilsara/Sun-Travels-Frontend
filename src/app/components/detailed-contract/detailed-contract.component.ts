@@ -11,8 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class DetailedContractComponent implements OnInit{
   
-  contract!: [];
-  contractDetails!: [];
+  contractDetails = <any>[];
   
   constructor (private route: ActivatedRoute, private api: ApiService){
 

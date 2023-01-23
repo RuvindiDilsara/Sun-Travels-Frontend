@@ -31,6 +31,8 @@ import { DetailedContractComponent } from './components/detailed-contract/detail
 import { AddHotelFormComponent } from './components/add-hotel-form/add-hotel-form.component';
 import { AddHotelServiceService } from './services/add-hotel-service.service';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ContractDetailsComponent } from './components/contract-details/contract-details.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import {MatChipsModule} from '@angular/material/chips';
     AddContractDialogComponent,
     DetailedContractComponent,
     AddHotelFormComponent,
+    ContractDetailsComponent,
 
   ],
   imports: [
@@ -69,6 +72,7 @@ import {MatChipsModule} from '@angular/material/chips';
     MatPaginatorModule,
     MatSortModule,
     MatChipsModule,
+    MatSnackBarModule,
   ],
   providers: [
     HotelService,
